@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Abel&family=Sansita+Swashed:wght@500&display=swap"
+            rel="stylesheet"
+        />
+        <title>30 days of React</title>
+        <style type="text/css">
+            html,
+            body {
+                height: 100%;
+            }
+            .root {
+                height: 100%;
+                display: grid;
+                grid-template-columns: 1fr auto 1fr;
+                grid-template-rows: 1fr auto 1fr;
+                grid-template-areas:
+                    ". . ."
+                    "margin-left app margin-right"
+                    ". . .";
+                font-family: "Abel", sans-serif;
+            }
+
+            .app {
+                grid-area: app;
+                padding: 2em;
+                border: 3px solid brown;
+                border-radius: 15px;
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="root"></div>
+
+        <script
+            crossorigin
+            src="https://unpkg.com/react@16/umd/react.development.js"
+        ></script>
+        <script
+            crossorigin
+            src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+        ></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <script type="text/babel">
+            const myName = "Jean-Marc MONTOUT";
+            const country = "France";
+            const title = "Mister";
+            const gender = "male";
+            const email = "jeanmarc@mail.com";
+            const phone = "01.23.45.67";
+            const techs = ["HTML", "CSS", "JavaScript"];
+            const techsFormatted = techs.map((tech, index) => (
+                <li key={index}>{tech}</li>
+            ));
+
+            const mainStyle = {
+                textAlign: "center",
+            };
+            const h1Style = {
+                fontFamily: "Sansita Swashed, cursive",
+                fontSize: "26px",
+            };
+            const main = (
+                <main style={mainStyle}>
+                    <h1 style={h1Style}>{myName}</h1>
+                    <p>{country}</p>
+                    <p>{title}</p>
+                    <p>{gender}</p>
+                    <p>{email}</p>
+                    <p>{phone}</p>
+                    <h2
+                        style={{
+                            marginBlockEnd: "0.4em",
+                        }}
+                    >
+                        Tech skills
+                    </h2>
+                    <ul
+                        style={{
+                            display: "flex",
+                            justifyContent: "space-evenly",
+                        }}
+                    >
+                        {techsFormatted}
+                    </ul>
+                </main>
+            );
+
+            const footerStyle = {
+                textAlign: "center",
+                fontSize: "smaller",
+                fontStyle: "italic"
+            };
+            const footer = (
+                <footer style={footerStyle}>
+                    <p>30 days of React</p>
+                </footer>
+            );
+
+            const app = (
+                <div className="app">
+                    {main}
+                    {footer}
+                </div>
+            );
+
+            ReactDOM.render(app, document.querySelector(".root"));
+        </script>
+    </body>
+</html>
